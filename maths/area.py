@@ -186,6 +186,56 @@ def area_circle(radius: float) -> float:
     return pi * radius ** 2
 
 
+def area_ellipse(radius_x: float, radius_y: float) -> float:
+    """
+    Calculate the area of a ellipse
+
+    >>> area_ellipse(10, 10)
+    314.1592653589793
+    >>> area_ellipse(10, 20)
+    628.3185307179587
+    >>> area_ellipse(-10, 20)
+    Traceback (most recent call last):
+        ...
+    ValueError: area_ellipse() only accepts non-negative values
+    >>> area_ellipse(10, -20)
+    Traceback (most recent call last):
+        ...
+    ValueError: area_ellipse() only accepts non-negative values
+    >>> area_ellipse(-10, -20)
+    Traceback (most recent call last):
+        ...
+    ValueError: area_ellipse() only accepts non-negative values
+    """
+    if radius_x < 0 or radius_y < 0:
+        raise ValueError("area_ellipse() only accepts non-negative values")
+    return pi * radius_x * radius_y
+
+
+def area_rhombus(diagonal_1: float, diagonal_2: float) -> float:
+    """
+    Calculate the area of a rhombus
+
+    >>> area_rhombus(10, 20)
+    100.0
+    >>> area_rhombus(-1, -2)
+    Traceback (most recent call last):
+        ...
+    ValueError: area_rhombus() only accepts non-negative values
+    >>> area_rhombus(1, -2)
+    Traceback (most recent call last):
+        ...
+    ValueError: area_rhombus() only accepts non-negative values
+    >>> area_rhombus(-1, 2)
+    Traceback (most recent call last):
+        ...
+    ValueError: area_rhombus() only accepts non-negative values
+    """
+    if diagonal_1 < 0 or diagonal_2 < 0:
+        raise ValueError("area_rhombus() only accepts non-negative values")
+    return 1 / 2 * diagonal_1 * diagonal_2
+
+
 def main():
     print("Areas of various geometric shapes: \n")
     print(f"Rectangle: {area_rectangle(10, 20)}")
@@ -197,6 +247,7 @@ def main():
     print("\nSurface Areas of various geometric shapes: \n")
     print(f"Cube: {surface_area_cube(20)}")
     print(f"Sphere: {surface_area_sphere(20)}")
+    print(f"Rhombus: {area_rhombus(10, 20)}")
 
 
 if __name__ == "__main__":
